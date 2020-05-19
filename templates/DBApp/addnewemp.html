@@ -1,0 +1,26 @@
+{% extends  'DBApp/base.html' %}
+
+  {% block parentblock %}
+
+{% load crispy_forms_tags %}
+<div class="container text-center">
+  <h1>Add New Employee Form</h1> <hr/>
+{% if msg%}
+  <div class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{msg}}</strong>
+  </div>
+{%endif%}
+
+<div class="row justify-content-center">
+   <div class="col-lg-4">
+  <form method="post" >
+   {{empform | crispy}}
+   {%csrf_token%}
+  <input type="submit" name="" value="Save" />
+  </form>
+</div>
+</div>
+
+</div>
+  {%endblock%}

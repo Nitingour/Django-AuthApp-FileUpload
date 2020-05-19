@@ -1,0 +1,26 @@
+
+{% extends  'DBApp/base.html' %}
+
+  {% block parentblock %}
+
+<h1>Employee Details:</h1>
+{% if emplist %}
+<table class="table table-hover">
+  <tr>
+        <th>EID</th><th>EName</th><th>Salary</th><th>Address</th><th>Department</th>
+  </tr>
+    {% for emp in emplist %}
+     <tr>
+       <td>{{emp.eid}}</td>
+       <td>{{emp.ename}}</td>
+       <td>{{emp.salary}}</td>
+       <td>{{emp.address}}</td>
+          <td>{{emp.department}}</td>
+     </tr>
+    {%endfor%}
+  </table>
+{%else%}
+ <h2>No Data Founds</h2>
+{%endif%}
+
+  {%endblock%}

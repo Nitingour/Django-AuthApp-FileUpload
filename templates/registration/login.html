@@ -1,0 +1,15 @@
+
+
+
+{% extends  'DBApp/base.html' %}
+
+  {% block parentblock %}
+{% load crispy_forms_tags %}
+<h1>Login Form</h1>
+<form  method="post">
+{{form| crispy}}
+{%csrf_token%}
+<input type="submit" value="Login" />
+</form>
+
+   {%endblock%}

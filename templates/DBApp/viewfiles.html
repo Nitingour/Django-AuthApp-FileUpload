@@ -1,0 +1,38 @@
+
+{% extends  'DBApp/base.html' %}
+
+  {% block parentblock %}
+  {% if msg%}
+    <div class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>{{msg}}</strong>
+    </div>
+  {%endif%}
+<h1>Upload Files Details:</h1>
+{% if images %}
+<table class="table table-hover">
+  <tr>
+       <th>ID</th><th>Name</th><th>Image</th>  <th>Author</th><!--<th>Date-Time</th> -->
+  </tr>
+    {% for img in images %}
+     <tr>
+       <td>{{img.id}}</td>
+       <td>{{img.name}}</td>
+       <td><a href="/detailProduct/{{img.id}}"><img src="{{img.pic.url}}" height="100" width="150" class="rounded-circle"></a></td>
+   <td>{{img.author}}</td>
+   {% ifequal request.user.username img.author %}
+<td><a href="/deleteproduct/{{img.id}}" class="fa fa-times" onclick="return confirm('Are you sure?')" ></a></td>
+ {% endifequal%}
+
+
+       <!-- <td>{{img.author}}</td>
+          <td>{{img.upload_date | timesince}}</td> -->
+           <!-- | -->
+     </tr>
+    {%endfor%}
+  </table>
+{%else%}
+ <h2>No Data Founds</h2>
+{%endif%}
+
+  {%endblock%}
